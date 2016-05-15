@@ -56,6 +56,8 @@
     <Compile Include="Auth\Data.cs" />
     <Compile Include="Auth\LauncherResponseData.cs" />
     <Compile Include="Auth\SafeRegisterResponse.cs" />
+    <Compile Include="Dns\Dns.cs" />
+    <Compile Include="Dns\RegisterService.cs" />
     <Compile Include="Exceptions\AuthException.cs" />
     <Compile Include="Exceptions\SafeException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,9 +65,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dns\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Baseclass.Contrib.Nuget.Output.2.1.0\build\net40\Baseclass.Contrib.Nuget.Output.targets" Condition="Exists('..\packages\Baseclass.Contrib.Nuget.Output.2.1.0\build\net40\Baseclass.Contrib.Nuget.Output.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

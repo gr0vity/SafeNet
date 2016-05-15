@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.IO;
+using NUnit.Framework;
 using System.Threading.Tasks;
 using SafeNet.Auth;
 
@@ -15,7 +17,7 @@ namespace SafeNetTest
                 "0.0.1",
                 "test",
                 "org.test.me",
-                permissions: new System.Collections.Generic.List<string>()
+                permissions: new System.Collections.Generic.List<string> { "SAFE_DRIVE_ACCESS" }
                 );
 
             var registration = await app.Register();
@@ -24,10 +26,8 @@ namespace SafeNetTest
             var valid = await registration.Check();
 
             Assert.IsTrue(valid);
-
-            var unregistered = await registration.Unregister();
-
-            Assert.IsTrue(unregistered); 
+            
+            await registration.SaveToFile(Common.TestFilePath); 
         }
     }
 }
