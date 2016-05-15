@@ -2,12 +2,12 @@
 {
     internal class App
     {
-        internal string name { get; set; }
+        public string name { get; set; }
 
-        internal string version { get; set; }
+        public string version { get; set; }
 
-        internal string vendor { get; set; }
+        public string vendor { get; set; }
 
-        internal string id { get; set; }
+        public string id { get; set; }
     }
 }

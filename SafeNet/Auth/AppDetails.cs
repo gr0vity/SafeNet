@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -88,12 +89,12 @@ namespace SafeNet.Auth
 
                 var decryptedSymmetricKeyNonce = Sodium.PublicKeyBox.Open(encryptedSymmetricKeyNonce, nonce, keypair.PrivateKey, launcherPublicKey);
 
-
+                
 
                 return new SafeRegisterResponse(
                     launcherResponse.token
-                    , decryptedSymmetricKeyNonce
-                    , decryptedSymmetricKeyNonce
+                    , decryptedSymmetricKeyNonce.Take(Sodium.PublicKeyBox.PublicKeyBytes).ToArray()
+                    , decryptedSymmetricKeyNonce.Skip(Sodium.PublicKeyBox.PublicKeyBytes).ToArray()
                     );
             }
         }
