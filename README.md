@@ -1,4 +1,4 @@
-# SAFE.net a SAFE network client library written in C#
+# SAFE.net a SAFE network client library written in C# #
 
 This is a partial implementation of the SAFE launcher API in C#. Pull requests are welcome and appreciated.
 
