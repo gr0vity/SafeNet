@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Sodium;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SafeNet.Auth
 {
@@ -58,8 +60,11 @@ namespace SafeNet.Auth
 
         public string DecryptResponse(string response)
         {
-            var bytes = Convert.FromBase64String(response);
-            var decrypted = SecretBox.Open(bytes, SymmetricNonce, SymmetricKey);
+            var content = Convert.FromBase64String(response);
+            List<byte> buffer = content.ToList<byte>() ;
+            List<byte> checksum = new List<byte>() {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} ;
+            buffer.InsertRange(0, checksum) ;          
+            var decrypted = SecretBox.Open(buffer.ToArray(), SymmetricNonce, SymmetricKey);
 
             return Encoding.UTF8.GetString(decrypted);
         }
