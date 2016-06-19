@@ -92,7 +92,7 @@ namespace SafeNet.Dns
         {
             using (var client = registration.Client)
             {
-                var resp = await client.GetAsync("dns");
+                var resp = await client.GetAsync("dns/");
                 if (resp.StatusCode != HttpStatusCode.OK)
                 {
                     throw new AuthException(resp); 
